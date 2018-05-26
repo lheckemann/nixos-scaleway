@@ -2,6 +2,7 @@
 {
   config = {
     nixpkgs.overlays = [(import ./overlay.nix)];
+    environment.systemPackages = builtins.attrValues pkgs.scaleway;
     systemd.services.scw-ssh-keys = {
       wantedBy = ["multi-user.target"];
       requires = ["networking.target"];
