@@ -5,8 +5,8 @@
     environment.systemPackages = builtins.attrValues pkgs.scaleway;
     systemd.services.scw-ssh-keys = {
       wantedBy = ["multi-user.target"];
-      requires = ["networking.target"];
-      after = ["networking.target"];
+      requires = ["network.target"];
+      after = ["network.target"];
       serviceConfig = {
         ExecStart = "${pkgs.scaleway.scw-fetch-ssh-keys}/bin/scw-fetch-ssh-keys";
         Type = "oneshot";
