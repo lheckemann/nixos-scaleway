@@ -8,7 +8,7 @@
       requires = ["networking.target"];
       after = ["networking.target"];
       serviceConfig = {
-        ExecStart = "${pkgs.scw-fetch-ssh-keys}/bin/scw-fetch-ssh-keys";
+        ExecStart = "${pkgs.scaleway.scw-fetch-ssh-keys}/bin/scw-fetch-ssh-keys";
         Type = "oneshot";
       };
     };
