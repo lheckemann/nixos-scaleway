@@ -7,3 +7,4 @@ The essential component of this ~~is~~ will eventually be a NixOS module that in
 Currently supported features:
 
  - Fetching SSH keys
+ - Setting hostname
