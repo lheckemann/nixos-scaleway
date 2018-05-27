@@ -24,13 +24,12 @@ in {
     remote "addgroup --system nixbld"
     remote "adduser --system --ingroup nixbld --home /homeless-shelter --disabled-password --no-create-home nixbld1"
     remote "adduser nixbld1 nixbld"
-    remote "${nix}/bin/nix-channel --add https://github.com/nixos/nixpkgs/archive/7f27566efd3058ae56a21e85b2ababd1fc65fda2.tar.gz nixos"
-    remote "${nix}/bin/nix-channel --update"
     remote "${nix}/bin/nix-channel --add https://nixos.org/channels/nixos-unstable nixos"
     remote "${nix}/bin/nix-env -p /nix/var/nix/profiles/system --set ${system}"
     remote "find /etc -not -name 'ssh_host_*' -delete ; touch /etc/NIXOS"
     remote "rm -f /root/.bashrc /root/.profile"
     remote "${system}/activate ; ${system}/bin/switch-to-configuration switch"
-    remote "rm -rf /bin /media /opt /sbin /srv /var/{backups,cache,lib/{apt,dhcp,dpkg,logrotate,man-db,misc,ntp,ntpdate,pam,python,sudo,ucf,vim}}"
+    remote "rm -rf /bin /usr /media /opt /sbin /srv /var/{backups,cache,lib/{apt,dhcp,dpkg,logrotate,man-db,misc,ntp,ntpdate,pam,python,sudo,ucf,vim}}"
+    tar c ${./.} | remote "mkdir -p /etc/nixos ; cd /etc/nixos ; tar x"
   '';
 }
